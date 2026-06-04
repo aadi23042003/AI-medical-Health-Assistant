@@ -7,7 +7,7 @@ function Intro() {
   useEffect(() => {
   const timer = setTimeout(() => {
     setCount(false);
-  }, 6000); // 6 seconds
+  }, 8000); // 6 seconds
 
   return () => clearTimeout(timer); // cleanup
 }, [count]);
