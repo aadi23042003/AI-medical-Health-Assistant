@@ -63,7 +63,7 @@ export default function HealthAssistantHome() {
     if (!symptoms.trim()) return;
     alert(`Analyzing: "${symptoms}"\n\n(Connect your AI backend here)`);
   };
-  let [st,setSt]=useState(false)
+  let [st,setSt]=useState(false);
   useEffect(() => {
   const timer = setTimeout(() => {
     setSt(true);
@@ -96,13 +96,13 @@ export default function HealthAssistantHome() {
       </div>
 
       {/* Navbar */}
-      <nav className="relative z-10 flex items-center justify-between px-8 py-4 border-b border-white/[0.07]">
+      <nav className="relative z-10 flex items-center justify-between px-8 py-4 border-b border-white/20">
         <div className="flex items-center gap-2.5" style={{ fontFamily: "'Sora', sans-serif" }}>
           <div className="w-8 h-8 rounded-lg flex items-center justify-center text-base"
             style={{ background: "linear-gradient(135deg, #1dbd97, #1d6bbd)" }}>
             🧬
           </div>
-          <span className="font-semibold text-sm tracking-tight text-[#e8edf7]">HealthAI</span>
+          <span className="font-semibold text-sm tracking-tight text-[#e8edf7]">Health Assistant</span>
         </div>
 
         
