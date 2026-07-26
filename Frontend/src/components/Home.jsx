@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react"
 import { useEffect } from "react";
-const QUICK_SYMPTOMS = ["Headache", "Fever", "Fatigue", "Chest pain", "Nausea", "Dizziness"];
+const QUICK_SYMPTOMS = ["Headache", "High Fever", "Fatigue", "Chest pain", "Nausea", "Dizziness","Mild Fever","Cough","Sore Throat","Shortness of Breath","Abdominal Pain","Back Pain","Joint Pain","Muscle Pain","Rash","Vomiting","Diarrhea","Constipation","Loss of Appetite","Weight Loss","Weight Gain","Anxiety","Depression"];
 
 const FEATURES = [
   {
@@ -61,8 +61,25 @@ export default function HealthAssistantHome() {
 
   const handleAnalyze = () => {
     if (!symptoms.trim()) return;
-    alert(`Analyzing: "${symptoms}"\n\n(Connect your AI backend here)`);
+    const symptomsArray = symptoms.split(",").map(s => s.trim());
+    fetch("http://localhost:8000/api/analytics/", {
+    method: "POST",
+    headers: {
+       "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+       "symptoms": symptomsArray
+    })
+  }).then(response => response.json())
+  .then(data => {
+    console.log("Success:", data);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+    
   };
+  
   let [st,setSt]=useState(false);
   useEffect(() => {
   const timer = setTimeout(() => {
@@ -237,3 +254,4 @@ export default function HealthAssistantHome() {
     </motion.div>)
   );
 }
+
