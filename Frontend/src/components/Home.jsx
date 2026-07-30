@@ -31,7 +31,9 @@ const TRUST = [
   "Voice input supported",
 ];
 
-export default function HealthAssistantHome() {
+export default function HealthAssistantHome({setResult, setAnalysis, setResultState ,st,setSt}) {
+  const [stat,setStat]=useState(false);
+  
   const [symptoms, setSymptoms] = useState("");
   const [listening, setListening] = useState(false);
 
@@ -72,7 +74,16 @@ export default function HealthAssistantHome() {
     })
   }).then(response => response.json())
   .then(data => {
-    console.log("Success:", data);
+    
+    setResult(data.result);
+    setAnalysis(true);
+    setSt(false)
+    setTimeout(() => {
+      
+      
+    setResultState(true);
+    }, 5000); // 5 seconds delay
+    
   })
   .catch((error) => {
     console.error("Error:", error);
@@ -80,7 +91,7 @@ export default function HealthAssistantHome() {
     
   };
   
-  let [st,setSt]=useState(false);
+  
   useEffect(() => {
   const timer = setTimeout(() => {
     setSt(true);

@@ -20,7 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-eil4)-y&&49fd@e287@t)vocqlc4v7qnat8e4(2drq@wc10)ta'
+import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')  # explicit path is safer than relying on cwd
+
+SECRET_KEY = os.environ['SECRET_KEY']  # raises an error if missing — good, fails loudly
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -121,4 +128,5 @@ USE_TZ = True
 STATIC_URL = 'static/'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://ai-health-assistant-orpin.vercel.app"
 ]
