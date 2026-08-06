@@ -13,18 +13,14 @@ function App() {
   const [result, setResult] = useState({})
   const [resultState, setResultState] = useState(false)
   const [analysis, setAnalysis] = useState(false)
-  let [st,setSt]=useState(false);
+  const [st,setSt]=useState(false);
   return (
-    
       <><Analyzing setAnalysis={setAnalysis} analysis={analysis}/>
       <Result result={result} onBack={() => {setSt(true)
         setResultState(false)}} resultState={resultState}/>
-      
       <Intro/>
       <Home st={st} setSt={setSt} setResult={setResult} setAnalysis={setAnalysis} setResultState={setResultState}/>
       </>
-     
-    
   )
 }
 
