@@ -64,7 +64,7 @@ export default function HealthAssistantHome({setResult, setAnalysis, setResultSt
   const handleAnalyze = () => {
     if (!symptoms.trim()) return;
     const symptomsArray = symptoms.split(",").map(s => s.trim());
-    fetch("http://16.192.167.152:8000/api/analytics/", {
+    fetch("https://16.192.167.152:8000/api/analytics/", {
     method: "POST",
     headers: {
        "Content-Type": "application/json"
