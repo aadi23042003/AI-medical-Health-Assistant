@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react"
 import { useEffect } from "react";
-const QUICK_SYMPTOMS = ["Headache", "High Fever", "Fatigue", "Chest pain", "Nausea", "Dizziness","Mild Fever","Cough","Sore Throat","Shortness of Breath","Abdominal Pain","Back Pain","Joint Pain","Muscle Pain","Rash","Vomiting","Diarrhea","Constipation","Loss of Appetite","Weight Loss","Weight Gain","Anxiety","Depression"];
+const QUICK_SYMPTOMS = ["Headache", "High Fever", "Fatigue", "Chest pain", "Nausea", "Dizziness","Mild Fever","Cough","Sore Throat","Shortness of Breath","Abdominal Pain","Back Pain","Joint Pain","Muscle Pain","Rash","Vomiting","Diarrhoea","Constipation","Loss of Appetite","Weight Loss","Weight Gain","Anxiety","Depression"];
 
 const FEATURES = [
   {
@@ -64,7 +64,7 @@ export default function HealthAssistantHome({setResult, setAnalysis, setResultSt
   const handleAnalyze = () => {
     if (!symptoms.trim()) return;
     const symptomsArray = symptoms.split(",").map(s => s.trim());
-    fetch("https://aditya23.in:8000/api/analytics/", {
+    fetch("http://localhost:8000/api/analytics/", {
     method: "POST",
     headers: {
        "Content-Type": "application/json"
